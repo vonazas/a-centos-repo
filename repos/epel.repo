@@ -1,0 +1,5 @@
+[epel-mirror]
+name=epel-mirror
+baseurl=http://mirror.adsw.io/centos/7/epel/x86_64
+enabled = 1
+gpgcheck=0

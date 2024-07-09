@@ -1,0 +1,5 @@
+[updates-mirror]
+name=updates-mirror
+baseurl=http://mirror.adsw.io/centos/7/updates/x86_64
+enabled = 1
+gpgcheck=0

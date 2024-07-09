@@ -1,0 +1,5 @@
+[extras-mirror]
+name=extras-mirror
+baseurl=http://mirror.adsw.io/centos/7/extras/x86_64
+enabled = 1
+gpgcheck=0

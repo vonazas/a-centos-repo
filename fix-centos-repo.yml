@@ -1,0 +1,42 @@
+---
+
+- hosts: all
+  tasks:
+
+  - name: Create backup directory
+    file:
+      path: ~/Backup
+      state: directory
+
+  - name: Backup repository files
+    copy:
+      src: /etc/yum.repos.d
+      dest: ~/Backup
+      force: no
+      remote_src: yes
+
+  - name: Copy Arenadata repos
+    copy:
+      src: repos/
+      dest: /etc/yum.repos.d/
+      force: yes
+    become: yes
+
+      #  - name: Change repo URLs
+      #    shell: |
+      #      sed -i 's/^mirrorlist/# mirrorlist/g' /etc/yum.repos.d/CentOS-*
+      #      sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+      #    become: yes
+
+  - name: Install packages
+    yum:
+      name:
+        - epel-release
+        - htop
+        - tmux
+        - tree
+        - vim
+      state: latest
+      update_cache: yes
+    become: yes
+
